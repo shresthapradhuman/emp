@@ -9,10 +9,37 @@ datasource db {
 }
 
 model Category {
-  id    String @id @default(cuid())
+  id    String  @id @default(cuid())
   name  String
-  slug  String @unique
-  order Int    @unique
+  slug  String  @unique
+  order Int     @unique
+  Event Event[]
 
   @@map("categories")
+}
+
+model Event {
+  id          String      @id @default(cuid())
+  title       String      @db.VarChar(255)
+  description String      @db.Text()
+  status      EventStatus @default(Draft)
+  date        DateTime
+  startTime   String      @db.VarChar(5)
+  endTime     String      @db.VarChar(5)
+  venue       String      @db.VarChar(255)
+  capacity    String?
+  price       String
+  image       String      @db.Text()
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  category    Category?   @relation(fields: [categoryId], references: [id])
+  categoryId  String?
+
+  @@map("events")
+}
+
+enum EventStatus {
+  Draft
+  Published
+  Cancelled
 }

@@ -127,6 +127,23 @@ exports.Prisma.CategoryScalarFieldEnum = {
   order: 'order'
 };
 
+exports.Prisma.EventScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  status: 'status',
+  date: 'date',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  venue: 'venue',
+  capacity: 'capacity',
+  price: 'price',
+  image: 'image',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  categoryId: 'categoryId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -137,9 +154,19 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+exports.EventStatus = exports.$Enums.EventStatus = {
+  Draft: 'Draft',
+  Published: 'Published',
+  Cancelled: 'Cancelled'
+};
 
 exports.Prisma.ModelName = {
-  Category: 'Category'
+  Category: 'Category',
+  Event: 'Event'
 };
 
 /**
