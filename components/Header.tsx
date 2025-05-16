@@ -8,7 +8,7 @@ import MobileMenu from './MobileMenu'
 const Header = () => {
   const session = true
   return (
-    <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 h-16 w-full border-b shadow backdrop-blur">
+    <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 h-16 w-full border-b backdrop-blur">
       <nav className="container mx-auto flex h-full max-w-screen-xl items-center justify-between px-4 md:px-16">
         {/* logo section */}
         <Logo />

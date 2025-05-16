@@ -1,6 +1,6 @@
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
 import React, { ReactNode } from 'react'
-import Header from './_components/Header'
-import Footer from './_components/Footer'
 
 const SiteLayout = ({ children }: { children: ReactNode }) => {
   return (

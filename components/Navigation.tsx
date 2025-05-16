@@ -22,7 +22,7 @@ const Navigation = () => {
               href={url}
               className={cn(
                 navigationMenuTriggerStyle(),
-                'hover:bg-background hover:text-primary focus:text-primary text-base focus:bg-transparent',
+                'hover:text-primary focus:text-primary bg-transparent text-base hover:bg-transparent focus:bg-transparent',
                 {
                   'text-primary':
                     pathname == url || pathname?.startsWith(`${url}/`),

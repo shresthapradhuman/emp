@@ -1,13 +1,8 @@
 import React from 'react'
-import { prisma } from '@/prisma/client'
 import CategoryCard from './CategoryCard'
+import { Category } from '@/prisma/generated/prisma'
 
-const CategorySection = async () => {
-  const categories = await prisma.category.findMany({
-    orderBy: {
-      order: 'asc',
-    },
-  })
+const CategorySection = ({ categories }: { categories: Category[] }) => {
   return (
     <section className="bg-primary/10 w-full py-12 md:py-16 lg:py-24">
       <div className="container mx-auto max-w-screen-xl px-4 md:px-16">
@@ -21,7 +16,7 @@ const CategorySection = async () => {
             </p>
           </div>
         </div>
-        <div className="mx-auto mt-8 grid grid-cols-1 justify-center gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 lg:gap-8">
+        <div className="mx-auto mt-8 grid grid-cols-1 justify-center gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 lg:gap-8">
           {categories.map((category, key) => (
             <CategoryCard key={key} category={category} />
           ))}
