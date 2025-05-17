@@ -8,7 +8,7 @@ import Image from 'next/image'
 const CategoryCard = ({ category }: { category: Category }) => {
   const router = useRouter()
   const onClick = () => {
-    router.push(`/events?slug=${category.slug}`)
+    router.push(`/events?category=${category.slug}`)
   }
   return (
     <Card className="flex aspect-square cursor-pointer items-center justify-center rounded-full">

@@ -1,5 +1,11 @@
 'use client'
+import React from 'react'
+import Link from 'next/link'
+import { User } from 'next-auth'
+import AuthenticationButton from './AuthenticationButton'
+import { headerItems, profileItems } from '@/constants'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { ChevronUpIcon, LogOutIcon, MenuIcon } from 'lucide-react'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,20 +22,11 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet'
-import { headerItems, profileItems } from '@/constants'
-import { ChevronUpIcon, LogOutIcon, MenuIcon } from 'lucide-react'
-import Link from 'next/link'
-import React from 'react'
-import AuthenticationButton from './AuthenticationButton'
+import { logoutAction } from '@/actions/auth'
 
-const MobileMenu = () => {
-  const user = {
-    name: 'Pradhuman Shrestha',
-    email: 'shresthapradhuman2018@gmail.com',
-    image: '/profile.svg',
-  }
+const MobileMenu = ({ user }: { user: User | undefined }) => {
   const handleLogout = async () => {
-    alert('logout')
+    await logoutAction()
   }
   return (
     <Sheet>

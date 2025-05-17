@@ -1,6 +1,8 @@
 'use client'
 import React from 'react'
 import Link from 'next/link'
+import { User } from 'next-auth'
+import { logoutAction } from '@/actions/auth'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
   DropdownMenu,
@@ -13,14 +15,9 @@ import {
 import { profileItems } from '@/constants'
 import { LogOutIcon } from 'lucide-react'
 
-const UserDropdown = () => {
-  const handleLogout = () => {
-    alert('Logout')
-  }
-  const user = {
-    name: 'Pradhuman Shrestha',
-    email: 'shresthapradhuman2018@gmail.com',
-    image: '/profile.svg',
+const UserDropdown = ({ user }: { user: User }) => {
+  const handleLogout = async () => {
+    await logoutAction()
   }
   return (
     <DropdownMenu>
