@@ -21,12 +21,12 @@ const UserDropdown = ({ user }: { user: User }) => {
   }
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="cursor-pointer rounded-full">
-        <Avatar className="bg-primary/10 relative h-8 w-8 overflow-hidden">
+      <DropdownMenuTrigger className="border-accent cursor-pointer rounded-full border-2">
+        <Avatar className="bg-background relative flex items-center justify-center overflow-hidden border p-0.5">
           <AvatarImage
             src={user.image || ''}
             alt={'avatar'}
-            className="h-10 w-10 object-cover"
+            className="rounded-full object-cover"
           />
           <AvatarFallback>U</AvatarFallback>
         </Avatar>

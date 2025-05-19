@@ -23,6 +23,7 @@ model User {
 
   accounts Account[]
   events   Event[]
+  Order    Order[]
 
   @@map("users")
 }
@@ -59,12 +60,12 @@ model VerificationToken {
 }
 
 model Category {
-  id    String  @id @default(cuid())
-  name  String
-  slug  String  @unique
-  order Int     @unique
-  image String?
-  event Event[]
+  id     String  @id @default(cuid())
+  name   String
+  slug   String  @unique
+  order  Int     @unique
+  image  String?
+  events Event[]
 
   @@map("categories")
 }
@@ -87,8 +88,21 @@ model Event {
   categoryId  String?
   organizer   User?       @relation(fields: [organizerId], references: [id])
   organizerId String?
+  Order       Order[]
 
   @@map("events")
+}
+
+model Order {
+  id          String @id @default(cuid())
+  stripeId    String @unique
+  totalAmount String
+  event       Event  @relation(fields: [eventId], references: [id])
+  eventId     String
+  buyer       User   @relation(fields: [buyerId], references: [id])
+  buyerId     String
+
+  @@map("orders")
 }
 
 enum EventStatus {

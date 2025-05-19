@@ -5,7 +5,7 @@ import NewsletterForm from './NewsletterForm'
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary/10 border-t">
+    <footer className="bg-accent border-t">
       <div className="relative z-10 container mx-auto w-full max-w-screen-xl px-4 py-8 md:px-16">
         <div className="flex flex-wrap items-start gap-8 lg:flex-nowrap lg:gap-0">
           <div className="w-full space-y-1.5 md:mr-14 md:max-w-60">
@@ -27,16 +27,16 @@ const Footer = () => {
                 Browse Events
               </Link>
               <Link
-                href="/create"
+                href="/user/events/create"
                 className="text-muted-foreground hover:text-foreground"
               >
                 Create Event
               </Link>
               <Link
-                href="/about"
+                href="/terms-of-service"
                 className="text-muted-foreground hover:text-foreground"
               >
-                About Us
+                Terms of Service
               </Link>
             </div>
           </div>
@@ -44,16 +44,16 @@ const Footer = () => {
             <h3 className="mb-4 text-lg font-semibold uppercase">Support</h3>
             <div className="grid gap-2 text-sm">
               <Link
-                href="/help"
+                href="/how-it-works"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                How It Works
+              </Link>
+              <Link
+                href="/help-center"
                 className="text-muted-foreground hover:text-foreground"
               >
                 Help Center
-              </Link>
-              <Link
-                href="/contact"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Contact Us
               </Link>
               <Link
                 href="/faq"
@@ -61,12 +61,7 @@ const Footer = () => {
               >
                 FAQ
               </Link>
-              <Link
-                href="/terms"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Terms of Service
-              </Link>
+             
             </div>
           </div>
           <NewsletterForm />

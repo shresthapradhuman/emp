@@ -7,7 +7,7 @@ const categories = [
     name: 'Music',
     slug: 'music',
     order: 1,
-    image: '/music.png',
+    image: 'music.png',
     data: [
       {
         title: 'Summer Beats Festival',
@@ -75,7 +75,7 @@ const categories = [
   {
     name: 'Business',
     slug: 'business',
-    image: '/business.png',
+    image: 'business.png',
     order: 2,
     data: [
       {
@@ -108,7 +108,7 @@ const categories = [
   {
     name: 'Festivals',
     slug: 'festivals',
-    image: '/festival.png',
+    image: 'festival.png',
     order: 3,
     data: [
       {
@@ -139,76 +139,10 @@ const categories = [
       },
     ],
   },
-  // {
-  //   name: 'Education',
-  //   slug: 'education',
-  //   image: '/education.png',
-  //   order: 4,
-  //   data: [
-  //     {
-  //       title: 'AI for Beginners Workshop',
-  //       description:
-  //         'Hands-on workshop introducing artificial intelligence concepts.',
-  //       status: 'Published',
-  //       date: '2025-06-15T09:30:00.000Z',
-  //       startTime: '09:30',
-  //       endTime: '16:00',
-  //       venue: 'Tokyo Tech University',
-  //       capacity: 100,
-  //       price: 3000,
-  //       category: 'education-learning',
-  //     },
-  //     {
-  //       title: 'Learn Japanese Kanji Fast',
-  //       description: 'Practical tips and methods to master JLPT kanji.',
-  //       status: 'Draft',
-  //       date: '2025-07-10T13:00:00.000Z',
-  //       startTime: '13:00',
-  //       endTime: '17:00',
-  //       venue: 'Nagoya Learning Center',
-  //       capacity: 80,
-  //       price: 2000,
-  //       category: 'education-learning',
-  //     },
-  //   ],
-  // },
-  // {
-  //   name: 'Technical',
-  //   slug: 'tech-innovation',
-  //   image: '/business.png',
-  //   order: 5,
-  //   data: [
-  //     {
-  //       title: 'Future of Blockchain Summit',
-  //       description:
-  //         'Explore the latest trends in blockchain technology and applications.',
-  //       status: 'Published',
-  //       date: '2025-09-14T10:00:00.000Z',
-  //       startTime: '10:00',
-  //       endTime: '17:00',
-  //       venue: 'Osaka Innovation Hub',
-  //       capacity: 600,
-  //       price: 4000,
-  //       category: 'tech-innovation',
-  //     },
-  //     {
-  //       title: 'Startup Tech Expo',
-  //       description: 'Exhibition of tech startups from Japan and overseas.',
-  //       status: 'Cancelled',
-  //       date: '2025-10-01T11:00:00.000Z',
-  //       startTime: '11:00',
-  //       endTime: '18:00',
-  //       venue: 'Makuhari Messe',
-  //       capacity: 1200,
-  //       price: 0,
-  //       category: 'tech-innovation',
-  //     },
-  //   ],
-  // },
   {
     name: 'Food & Drink',
     slug: 'food-drink',
-    image: '/food.png',
+    image: 'food.png',
     order: 6,
     data: [
       {
@@ -254,7 +188,7 @@ const categories = [
   {
     name: 'Hobbies',
     slug: 'hobbies',
-    image: '/hobbies.png',
+    image: 'hobbies.png',
     order: 7,
     data: [
       {
@@ -286,7 +220,7 @@ const categories = [
   {
     name: 'Health & Wellness',
     slug: 'health-wellness',
-    image: '/health.png',
+    image: 'health.png',
     order: 8,
     data: [
       {
@@ -358,6 +292,11 @@ export async function main() {
             category: {
               connect: {
                 id: cat.id,
+              },
+            },
+            organizer: {
+              connect: {
+                id: 'cmarqyjuj00008o0tld0qzv3h',
               },
             },
           },

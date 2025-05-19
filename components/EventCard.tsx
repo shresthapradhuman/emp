@@ -4,15 +4,17 @@ import Image from 'next/image'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
 import { convertToAmPm, formatEventDate, formatPrice } from '@/lib/utils'
-import { Category, Event } from '@/prisma/generated/prisma'
+import { Category, Event, User } from '@/prisma/generated/prisma'
 import { CalendarDaysIcon, MapPinIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 
 const EventCard = ({
   event,
 }: {
   event: Event & {
     category: Category | null
+    organizer: User | null
   }
 }) => {
   const router = useRouter()
@@ -28,9 +30,8 @@ const EventCard = ({
         <Image
           src={event.image || '/placeholder.svg'}
           alt={event.title}
-          layout="fill"
-          objectFit="cover"
-          className="transition-transform group-hover:scale-105"
+          fill
+          className="transition-transform group-hover:scale-105 object-cover"
           priority
           quality={90}
         />
@@ -49,19 +50,33 @@ const EventCard = ({
               {formatEventDate(event.date)}, {convertToAmPm(event.startTime)}
             </span>
           </div>
-          <h3 className="line-clamp-1 font-semibold">{event.title}</h3>
-          <p className="text-muted-foreground mt-1 line-clamp-1 text-sm">
+          <h3 className="line-clamp-1 font-semibold capitalize">
+            {event.title}
+          </h3>
+          <p className="text-muted-foreground mt-1 mb-2 line-clamp-1 text-sm">
             {event.description}
           </p>
+          <div className="flex items-center gap-2">
+            <Avatar className="h-5 w-5">
+              <AvatarImage
+                src={event.organizer?.image || ''}
+                alt={event.organizer?.name || 'user'}
+              />
+              <AvatarFallback>U</AvatarFallback>
+            </Avatar>
+            <p className="text-muted-foreground/80 text-sm font-semibold">
+              By {event.organizer?.name}
+            </p>
+          </div>
           <div className="mt-4 flex items-center justify-between">
             <div className="flex items-center gap-1">
               <MapPinIcon className="text-muted-foreground h-4 w-4" />
-              <span className="text-muted-foreground text-sm">
+              <span className="text-muted-foreground line-clamp-1 text-sm">
                 {event.venue}
               </span>
             </div>
             <div className="text-sm font-bold">
-              {formatPrice(parseInt(event.price), 'JPY')}
+              {event.price === '0' ? 'Free' : formatPrice(parseInt(event.price), 'JPY')}
             </div>
           </div>
         </div>

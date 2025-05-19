@@ -13,6 +13,10 @@ import {
   TrendingUpIcon,
   UserIcon,
   VolleyballIcon,
+  CheckCircle,
+  CircleOff,
+  HelpCircle,
+  GamepadIcon,
 } from 'lucide-react'
 
 export const headerItems = [
@@ -88,5 +92,71 @@ export const categoryIconsList = [
   {
     icon: PizzaIcon,
     name: 'Food & Drink',
+  },
+]
+
+export const labels = [
+  {
+    value: 'bug',
+    label: 'Bug',
+  },
+  {
+    value: 'feature',
+    label: 'Feature',
+  },
+  {
+    value: 'documentation',
+    label: 'Documentation',
+  },
+]
+
+export const statuses = [
+  {
+    value: 'Draft',
+    label: 'Draft',
+    icon: HelpCircle,
+  },
+  {
+    value: 'Published',
+    label: 'Published',
+    icon: CheckCircle,
+  },
+  {
+    value: 'Cancelled',
+    label: 'Cancelled',
+    icon: CircleOff,
+  },
+]
+
+export const categories = [
+  {
+    label: 'Music',
+    value: 'music',
+    icon: MusicIcon,
+  },
+  {
+    label: 'Business',
+    value: 'business',
+    icon: BriefcaseBusinessIcon,
+  },
+  {
+    label: 'Festivals',
+    value: 'festivals',
+    icon: PartyPopperIcon,
+  },
+  {
+    label: 'Food & Drink',
+    value: 'food-drink',
+    icon: PizzaIcon,
+  },
+  {
+    label: 'Hobbies',
+    value: 'hobbies',
+    icon: GamepadIcon,
+  },
+  {
+    label: 'Health & Wellness',
+    value: 'health-wellness',
+    icon: HeartPulseIcon,
   },
 ]

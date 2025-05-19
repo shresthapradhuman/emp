@@ -104,7 +104,7 @@ export const eventSchema = z
       .string()
       .nonempty({ message: 'Description is required' })
       .min(3, { message: 'Description must be atleast 3 characters or more' }),
-    status: z.enum(['DRAFT', 'PUBLISHED', 'CANCELLED']),
+    status: z.enum(['Draft', 'Published', 'Cancelled']),
     capacity: z.string().nonempty({ message: 'Capacity is required' }),
     date: z.date({
       required_error: 'Date is required',
@@ -135,3 +135,10 @@ export const eventSchema = z
       path: ['endTime'],
     },
   )
+
+  export const createOrderSchema = z.object({
+    stripeId: z.string().nonempty({ message: "Stripe Id is required" }),
+    totalAmount: z.string().nonempty({ message: "Total amount is required" }),
+    eventId: z.string().nonempty({ message: "Event Id is required" }),
+    buyerId: z.string().nonempty({ message: "Buyer Id is required" }),
+  })

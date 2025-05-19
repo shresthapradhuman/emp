@@ -1,5 +1,5 @@
 import React from 'react'
-import { Category, Event } from '@/prisma/generated/prisma'
+import { Category, Event, User } from '@/prisma/generated/prisma'
 import EventCard from './EventCard'
 
 const UpcomingEventsSection = ({
@@ -7,6 +7,7 @@ const UpcomingEventsSection = ({
 }: {
   events: (Event & {
     category: Category | null
+    organizer: User | null
   })[]
 }) => {
   return (

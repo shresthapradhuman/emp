@@ -7,6 +7,7 @@ import {
   loginSchema,
   registerSchema,
   resetPasswordSchema,
+  updateUserSchema,
 } from '@/schema'
 import {
   createUser,
@@ -17,12 +18,13 @@ import {
   getUserByToken,
   getVerificationToken,
   resetUserPassword,
+  updateUser,
   verifyUser,
 } from '@/helper/auth'
 import config from '@/lib/config'
 import { resend } from '@/lib/resend'
 import EmailVerification from '@/templates/EmailVerification'
-import { signIn, signOut } from '@/auth'
+import { auth, signIn, signOut } from '@/auth'
 import { DEFAULT_REDIRECT_URL } from '@/routes'
 import { AuthError } from 'next-auth'
 import ResetPassword from '@/templates/ResetPassword'
@@ -236,4 +238,58 @@ export const resetPasswordAction = async (
 
 export const logoutAction = async () => {
   await signOut()
+}
+
+export const updateUserAction = async (
+  values: z.infer<typeof updateUserSchema>,
+) => {
+  try {
+    const session = await auth()
+    if (!session?.user)
+      return {
+        success: false,
+        message: 'Invalid User',
+      }
+    const { data, success } = updateUserSchema.safeParse(values)
+    if (!success)
+      return {
+        success: false,
+        message: 'Invalid form data',
+      }
+    const checkUser = await getUserByEmail(data.email)
+    if (!checkUser)
+      return {
+        success: false,
+        message: 'Unauthorized User',
+      }
+    if (data.currentPassword && data.password) {
+      const comparePassword = await bcrypt.compareSync(
+        data.currentPassword,
+        checkUser.password as string,
+      )
+      if (!comparePassword)
+        return {
+          success: false,
+          message: 'Current password dont match',
+        }
+      const hashPassword = await bcrypt.hash(data.password, 10)
+      data.password = hashPassword
+    }
+    const newUser = await updateUser(session.user.id!, data)
+    if (!newUser)
+      return {
+        success: false,
+        message: 'Something went wrong while updating user.',
+      }
+    return {
+      success: true,
+      message: 'User has been successfully updated',
+    }
+  } catch (error) {
+    console.log(error)
+    return {
+      success: false,
+      message: 'Something went wrong. Internal server errror',
+    }
+  }
 }
