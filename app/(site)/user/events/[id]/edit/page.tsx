@@ -1,7 +1,7 @@
 import React from 'react'
 import EventForm from '@/components/user/events/EventForm'
 import { getCategoryList } from '@/helper/event'
-import { prisma } from '@/prisma/client'
+import prisma from '@/prisma/client'
 import { notFound } from 'next/navigation'
 
 const EventsEditPage = async ({

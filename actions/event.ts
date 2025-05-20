@@ -1,7 +1,7 @@
 'use server'
 import { z } from 'zod'
 import { eventSchema } from '@/schema'
-import { prisma } from '@/prisma/client'
+import prisma from '@/prisma/client'
 import { auth } from '@/auth'
 
 export const createEventAction = async (

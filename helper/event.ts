@@ -1,4 +1,4 @@
-import { prisma } from '@/prisma/client'
+import prisma from '@/prisma/client'
 import { User } from 'next-auth'
 import { SortingState } from '@tanstack/react-table'
 
@@ -68,7 +68,7 @@ export const getUpcomingEvents = async () => {
   const now = new Date()
   // Set time to start of today
   now.setHours(0, 0, 0, 0)
-  
+
   const events = await prisma.event.findMany({
     where: {
       status: 'Published',

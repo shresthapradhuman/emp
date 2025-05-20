@@ -11,7 +11,7 @@ import {
 } from 'lucide-react'
 import React from 'react'
 import { Metadata } from 'next'
-import { prisma } from '@/prisma/client'
+import prisma from '@/prisma/client'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
@@ -33,20 +33,32 @@ const EventDetailPage = async ({ params }: PageProps) => {
     },
   })
   return !event ? (
-    <div className="relative z-10 container mx-auto w-full max-w-screen-xl px-4 py-4 md:px-16">Event Not Found</div>
+    <div className="relative z-10 container mx-auto w-full max-w-screen-xl px-4 py-4 md:px-16">
+      Event Not Found
+    </div>
   ) : (
-    <div className='bg-secondary/5'>
+    <div className="bg-secondary/5">
       <div className="relative z-10 container mx-auto w-full max-w-screen-xl px-4 py-4 md:px-16">
-        <Link href="/events" className="text-muted-foreground flex items-center gap-2">
+        <Link
+          href="/events"
+          className="text-muted-foreground flex items-center gap-2"
+        >
           <ArrowLeftIcon className="inline-block h-4 w-4 stroke-3" />
           Back to Events
         </Link>
       </div>
       <section className="relative">
         <div className="relative aspect-video h-[500px] w-full">
-          <Image src={event.image} alt={event.title} fill className="object-cover object-top" priority quality={90} />
+          <Image
+            src={event.image}
+            alt={event.title}
+            fill
+            className="object-cover object-top"
+            priority
+            quality={90}
+          />
         </div>
-        <div className="relative z-10 container -mt-24 mx-auto w-full max-w-screen-xl px-4 py-4 md:px-16">
+        <div className="relative z-10 container mx-auto -mt-24 w-full max-w-screen-xl px-4 py-4 md:px-16">
           <div className="grid gap-6 lg:grid-cols-[1fr_350px]">
             {/* Event info */}
             <div className="bg-background rounded-lg p-6 shadow-lg">
@@ -68,13 +80,15 @@ const EventDetailPage = async ({ params }: PageProps) => {
                   <div>
                     <p className="font-semibold">Date & Time</p>
                     <p className="text-muted-foreground text-sm">
-                      {formatEventDate(event.date)} ({convertToAmPm(event.startTime)} ~ {convertToAmPm(event.endTime)})
+                      {formatEventDate(event.date)} (
+                      {convertToAmPm(event.startTime)} ~{' '}
+                      {convertToAmPm(event.endTime)})
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
                   <MapPinIcon className="text-muted-foreground h-5 w-5" />
-                  <div className='flex flex-col -mt-1'>
+                  <div className="-mt-1 flex flex-col">
                     <p className="font-semibold">Location</p>
                     <p className="text-muted-foreground text-sm">
                       {event.venue}
@@ -134,7 +148,7 @@ const EventDetailPage = async ({ params }: PageProps) => {
                   </span>
                 </div>
               </div>
-              <CheckoutButton event={event} className='mb-3 w-full'/>
+              <CheckoutButton event={event} className="mb-3 w-full" />
               <p className="text-muted-foreground text-center text-xs">
                 Only {event.capacity} tickets left at this price
               </p>
@@ -143,12 +157,23 @@ const EventDetailPage = async ({ params }: PageProps) => {
         </div>
       </section>
       <section className="relative z-10 container mx-auto w-full max-w-screen-xl px-4 py-4 md:px-16">
-        <Tabs defaultValue="description" className='bg-background rounded-lg p-6 shadow-lg'>
-          <TabsList className=' space-x-2 bg-transparent border-b justify-start shadow rounded-none w-full'>
-            <TabsTrigger value="description" className='font-semibold mb-2 cursor-pointer text-base grow-0 data-[state=active]:bg-primary/10 data-[state=active]:text-primary'>Description</TabsTrigger>
+        <Tabs
+          defaultValue="description"
+          className="bg-background rounded-lg p-6 shadow-lg"
+        >
+          <TabsList className="w-full justify-start space-x-2 rounded-none border-b bg-transparent shadow">
+            <TabsTrigger
+              value="description"
+              className="data-[state=active]:bg-primary/10 data-[state=active]:text-primary mb-2 grow-0 cursor-pointer text-base font-semibold"
+            >
+              Description
+            </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="description" className="space-y-6 bg-background rounded-lg py-6 shadow-lg">
+          <TabsContent
+            value="description"
+            className="bg-background space-y-6 rounded-lg py-6 shadow-lg"
+          >
             <div>
               <h2 className="mb-4 text-2xl font-bold">About This Event</h2>
               <div className="prose max-w-none">
@@ -156,7 +181,10 @@ const EventDetailPage = async ({ params }: PageProps) => {
               </div>
             </div>
           </TabsContent>
-          <TabsContent value="test" className="space-y-6 bg-background rounded-lg p-6 shadow-lg">
+          <TabsContent
+            value="test"
+            className="bg-background space-y-6 rounded-lg p-6 shadow-lg"
+          >
             <div>
               <h2 className="mb-4 text-2xl font-bold">Test</h2>
               <div className="prose max-w-none">

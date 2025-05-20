@@ -3,7 +3,7 @@ import { z } from 'zod'
 import { v4 as uuidv4 } from 'uuid'
 import { registerSchema, updateUserSchema } from '@/schema'
 import { User } from 'next-auth'
-import { prisma } from '@/prisma/client'
+import prisma from '@/prisma/client'
 
 export const getUserById = async (id: User['id']) => {
   return await prisma.user.findFirst({

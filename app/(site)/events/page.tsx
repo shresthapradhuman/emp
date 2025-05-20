@@ -2,7 +2,7 @@ import EventCard from '@/components/EventCard'
 import EventsFilters from '@/components/events/EventsFilters'
 import EventsSearchInput from '@/components/events/EventsSearchInput'
 import { cn } from '@/lib/utils'
-import { prisma } from '@/prisma/client'
+import prisma from '@/prisma/client'
 import React from 'react'
 
 type EventListProps = {

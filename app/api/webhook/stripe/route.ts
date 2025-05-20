@@ -1,7 +1,7 @@
 import { headers } from 'next/headers'
 import Stripe from 'stripe'
 import { NextResponse } from 'next/server'
-import { prisma } from '@/prisma/client'
+import prisma from '@/prisma/client'
 
 export const config = {
   api: {

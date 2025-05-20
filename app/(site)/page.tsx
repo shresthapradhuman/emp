@@ -4,7 +4,7 @@ import CategorySection from '@/components/CategorySection'
 import HeroSection from '@/components/HeroSection'
 import UpcomingEventsSection from '@/components/UpcomingEventsSection'
 import { getUpcomingEvents } from '@/helper/event'
-import { prisma } from '@/prisma/client'
+import prisma from '@/prisma/client'
 
 export default async function Home() {
   const categories = await prisma.category.findMany({
